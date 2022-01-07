@@ -85,6 +85,7 @@
     <ClInclude Include="src\Tandy.h" />
     <ClInclude Include="src\Tandy\Application.h" />
     <ClInclude Include="src\Tandy\Core.h" />
+    <ClInclude Include="src\Tandy\EntryPoint.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Tandy\Application.cpp" />

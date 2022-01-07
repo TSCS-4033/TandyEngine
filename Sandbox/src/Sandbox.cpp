@@ -6,8 +6,6 @@ class Sandbox : public Tandy::Application {
 		~Sandbox() {}
 };
 
-int main() {
-	Sandbox* sandbox = new Sandbox();
-	sandbox->Run();
-	delete sandbox;
+Tandy::Application* Tandy::CreateApplication() {
+	return new Sandbox();
 }

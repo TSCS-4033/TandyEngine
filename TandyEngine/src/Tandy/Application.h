@@ -12,4 +12,6 @@ namespace Tandy {
 			void Run();
 	};
 
+	Application* CreateApplication();
+
 }
