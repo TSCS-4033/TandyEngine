@@ -1,0 +1,3 @@
+[submodule "TandyEngine/vendor/spdlog"]
+	path = TandyEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog
