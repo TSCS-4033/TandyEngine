@@ -7,7 +7,11 @@
 	extern Tandy::Application* Tandy::CreateApplication();
 
 	int main(int argc, char** argv) {
-		printf("Tandy Engine Start!\n");
+		// initialize logger
+		Tandy::Log::Init();
+		// TODO: (optional) can be rewritten to use a macro instead
+		Tandy::Log::GetLogger()->info("Tandy Engine Start!");
+		// start app
 		auto app = Tandy::CreateApplication();
 		app->Run();
 		delete app;
