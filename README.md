@@ -2,7 +2,7 @@
 A game engine based on the Hazel engine intended for educational projects.
 
 # Project 1
-In project 1, we will configure a logger, a dialogue component, and an event system. The engine entrypoint has already
+In project 1, we will configure a logger, an event system, and a text component. The engine entrypoint has already
 been modified for this project to use the logger to report on the engine's initialization process. As such, the engine
 is now breaking and must be fixed by implementing the logger. Once the engine has been fixed, the Sandbox application
 includes a scene from a text-based adventure. It uses the engine's dialogue component and event system. These must both
@@ -23,8 +23,9 @@ log just about anything we create, which I hope will help you in debugging any e
 
 To build the logger:
 - In Visual Studio, create a Log class (or create Log.cpp and Log.h files) in TandyEngine/src/Tandy
-- Include Log.h in TandyEngine/src/Tandy.h so that the logger can accessed from the client application
-- In the logger (Log.cpp and Log.h), declare a shared pointer to a spdlog logger
+- Include Log.h in TandyEngine/src/Tandy.h so that the logger can be accessed from the client application
+- In the logger (Log.cpp and Log.h), implement an <code>inline static std::shared_ptr\<spdlog::logger\>& GetLogger()</code>
+function
 - In the logger, implement a <code>void Init()</code> function to initialize and configure the spdlog logger
 - (Optional) Define macros to simplify logging calls; you can simplify EntryPoint.h to use the defined macros
 - Note: spdlog can be included at "spdlog/spdlog.h"
@@ -32,3 +33,13 @@ To build the logger:
 - Note: you can watch [theCherno - Logging](https://www.youtube.com/watch?v=dZr-53LAlOw) for an example
 - Note: we are only using a single logger rather than separate core and client loggers since this isn't a production
 level game engine
+## text component
+The text component will be simple. It only needs to format bold and italics and print messages to the screen.
+
+To build the text component:
+- In Visual Studio, create a Text class (or create Text.cpp and Text.h files) in TandyEngine/src/Tandy
+- Include Text.h in TandyEngine/src/Tandy.h so that the Text component can be accessed from the client application
+- In the Text class, implement a static function <code>void textf(std::string& msg)</code>
+- The textf function should format all substrings between \<b> and \</b> as bold
+- The textf function should format all substring between \<i> and \</i> as italicized
+- The textf function should output the formatted string to the window
