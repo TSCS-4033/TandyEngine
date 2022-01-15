@@ -1,5 +1,6 @@
 # Directories
 .vs
+.DS_Store
 bin/
 bin-int/
 !vendor/bin
