@@ -66,6 +66,7 @@ project "Sandbox"
     }
 
     includedirs {
+        "TandyEngine/vendor/spdlog/include",
         "TandyEngine/src"
     }
 
