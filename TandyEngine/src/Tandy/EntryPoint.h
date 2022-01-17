@@ -2,6 +2,8 @@
 
 #ifdef TS_PLATFORM_WINDOWS
 
+	#include <stdio.h>
+
 	extern Tandy::Application* Tandy::CreateApplication();
 
 	int main(int argc, char** argv) {
