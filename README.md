@@ -84,7 +84,7 @@ The Events component defines the event types that our applications can handle an
   - [ ] <code>virtual int GetCategoryFlags()</code>
   - [ ] <code>virtual std::string ToString()</code>
 - Next, define the header file ApplicationEvent.h in the Events folder
-- In the ApplicationEvent.h header, define the following subclasses:
+- In the ApplicationEvent.h header, define the following subclasses within the Tandy namespace:
     - [ ] <code>WindowCloseEvent</code>
     - [ ] <code>WindowResizeEvent(unsigned int width, unsigned int height)</code>
     - [ ] <code>WindowFocusEvent</code>
@@ -96,10 +96,31 @@ The Events component defines the event types that our applications can handle an
 
 ## Event Dispatcher
 The event dispatcher is responsible for sending triggered events to event handlers that can handle those events.
-- [ ] In the Event.h header, define the <code>class EventDispatcher</code>
+- [ ] In the Event.h header, define the <code>class EventDispatcher</code> within the Tandy namespace
 - Note: the event dispatcher is not exported and is only used within the engine
 - It should have the following public API:
     - [ ] <code>EventDispatcher(Event& event)</code>
     - [ ] <code>bool Dispatch(std::function<bool(T&)> func)</code>
     - Note: T is a generic type, which can be defined with <code>template\<typename T\></code>
 - Note: see [theCherno - Events](https://www.youtube.com/watch?v=xnopUoZbMEk) for an example
+
+## Layer Stack
+The Layer Stack is responsible for ordering Layers into a hierarchy, where Layers include components that can handle events.
+- [ ] In TandyEngine/src/Tandy, add a Layer class with corresponding .cpp and .h files
+- [ ] In the Layer.h header, define the <code>class Layer</code> within the Tandy namespace
+- [ ] It should be exported as part of the TANDY\_API
+- It should define the following public API:
+    - [ ] <code>virtual void OnAttach()</code>
+    - [ ] <code>virtual void OnDetach()</code>
+    - [ ] <code>virtual void OnUpdate()</code>
+    - [ ] <code>virtual void OnEvent(Event& event)</code>
+    - [ ] <code>virtual std::string ToString()</code>
+- [ ] In TandyEngine/src/Tandy, add a LayerStack class with corresponding .cpp and .h files
+- [ ] In the LayerStack.h header, define the <code>class LayerStack</code> within the Tandy namespace
+- [ ] It should be exported as part of the TANDY\_API
+- It should define the following public API:
+    - [ ] <code>void PushLayer(Layer* layer)</code>
+    - [ ] <code>void PopLayer(Layer* layer)</code>
+    - [ ] <code>std::vector\<Layer*\>::iterator begin()</code>
+    - [ ] <code>std::vector\<Layer*\>::iterator end()</code>
+- Note: see [theCherno - Layers](https://www.youtube.com/watch?v=_Kj6BSfM6P4) for an example
