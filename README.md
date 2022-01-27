@@ -51,3 +51,11 @@ A basic text component was not included as part of the original Hazel design bec
     - [ ] Output the message
     - Note: it does need to handle standard formatting characters, such as <code>%.2f</code> or <code>%d</code> as those can already be handled for string::format
 - [ ] In Tandy.h, include Text.h so that the text component can be accessed from the client application
+
+# Project 1 - Layered Event System
+For project 1, we will implement a layered event system. In a layered event system, the application is composed of several Z-layers, where each layer is a collection of components that implement event handlers. These are called Z-layers because they exist as layers along the Z-axis, where the Z-axis is the dimension that extends into the screen.
+
+To implement a layered event system, we will implement several components, which include the Events, the Event Dispatcher, the Layer Stack, and the Window. The Events component is our type hierarchy of applicable events that can be handled by our engine and its applications. The principle purpose of the Events component is to define these applicable events, their properties, and group the events into usable categories. The Event Dispatcher is responsible for connecting applicable events to event handlers that can act upon the event. The Layer Stack manages an open stack of Layers, where each layer contains components that define event handlers, and the stack maintains a hierarchy of layers. The Layer Stack uses an open stack, so that new layers can be inserted anywhere into the layer stack. Finally, the Window will be a GLFW window that will serve as a canvas for generating events.
+
+If this sounds like a lot, the only right thing to do is to get started :)
+
