@@ -59,3 +59,37 @@ To implement a layered event system, we will implement several components, which
 
 If this sounds like a lot, the only right thing to do is to get started :)
 
+## Events
+The Events component defines the event types that our applications can handle and their characteristics. It also groups the events into categories, so that event handlers can handle categories of events rather than just particular events. Event categories are often defined using bit-flags. This is done so that an event handler can handle multiple categories. For example, we could set all Application Events to use the 0th bit and all Input Events to use the 1th bit. An event handler that sets a bit-filter of 3 would receive all Application Events and all Input Events, since the value 3 has the 0th and 1th bit set to 1 (turned on).
+- [ ] Add an Events folder to TandyEngine/src/Tandy
+- [ ] In the Events folder, add an Event header file (Event.h)
+- [ ] In the Event.h header, within the Tandy namespace, define an <code>enum class EventType</code>, an <code>enum EventCategory</code>, and a <code>class Event</code>.
+- The EventType should define enums for the following event types:
+  - [ ] None
+  - [ ] WindowClose
+  - [ ] WindowResize
+  - [ ] WindowFocus
+  - [ ] WindowLostFocus
+  - [ ] WindowMoved
+  - [ ] AppStart
+  - [ ] AppUpdate
+- Note: we'll handle input events later.
+- The EventCategory should define enums for the following event categories:
+  - [ ] None
+  - [ ] EventCategoryApplication
+- Note: the enums for the event categories should not share any bits in common.
+- [ ] The Event class should be exported as a part of the TANDY\_API.
+- It should have the following public API:
+  - [ ] <code>public virtual EventType GetEventType()</code>
+  - [ ] <code>public virtual int GetCategoryFlags()</code>
+  - [ ] <code>public virtual std::string ToString()</code>
+- Next, define the header file ApplicationEvent.h in the Events folder
+- In the ApplicationEvent.h header, define the following subclasses:
+    - [ ] WindowCloseEvent
+    - [ ] WindowResizeEvent
+    - [ ] WindowFocusEvent
+    - [ ] WindowLostFocusEvent
+    - [ ] WindowMovedEvent
+    - [ ] AppStartEvent
+    - [ ] AppUpdateEvent
+- Note: see [theCherno - Events](https://www.youtube.com/watch?v=xnopUoZbMEk) for an example
