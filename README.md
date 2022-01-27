@@ -80,16 +80,26 @@ The Events component defines the event types that our applications can handle an
 - Note: the enums for the event categories should not share any bits in common.
 - [ ] The Event class should be exported as a part of the TANDY\_API.
 - It should have the following public API:
-  - [ ] <code>public virtual EventType GetEventType()</code>
-  - [ ] <code>public virtual int GetCategoryFlags()</code>
-  - [ ] <code>public virtual std::string ToString()</code>
+  - [ ] <code>virtual EventType GetEventType()</code>
+  - [ ] <code>virtual int GetCategoryFlags()</code>
+  - [ ] <code>virtual std::string ToString()</code>
 - Next, define the header file ApplicationEvent.h in the Events folder
 - In the ApplicationEvent.h header, define the following subclasses:
-    - [ ] WindowCloseEvent
-    - [ ] WindowResizeEvent
-    - [ ] WindowFocusEvent
-    - [ ] WindowLostFocusEvent
-    - [ ] WindowMovedEvent
-    - [ ] AppStartEvent
-    - [ ] AppUpdateEvent
+    - [ ] <code>WindowCloseEvent</code>
+    - [ ] <code>WindowResizeEvent(unsigned int width, unsigned int height)</code>
+    - [ ] <code>WindowFocusEvent</code>
+    - [ ] <code>WindowLostFocusEvent</code>
+    - [ ] <code>WindowMovedEvent</code>
+    - [ ] <code>AppStartEvent</code>
+    - [ ] <code>AppUpdateEvent</code>
+- Note: see [theCherno - Events](https://www.youtube.com/watch?v=xnopUoZbMEk) for an example
+
+## Event Dispatcher
+The event dispatcher is responsible for sending triggered events to event handlers that can handle those events.
+- [ ] In the Event.h header, define the <code>class EventDispatcher</code>
+- Note: the event dispatcher is not exported and is only used within the engine
+- It should have the following public API:
+    - [ ] <code>EventDispatcher(Event& event)</code>
+    - [ ] <code>bool Dispatch(std::function<bool(T&)> func)</code>
+    - Note: T is a generic type, which can be defined with <code>template\<typename T\></code>
 - Note: see [theCherno - Events](https://www.youtube.com/watch?v=xnopUoZbMEk) for an example
