@@ -55,7 +55,9 @@ A basic text component was not included as part of the original Hazel design bec
 # Project 1 - Layered Event System
 For project 1, we will implement a layered event system. In a layered event system, the application is composed of several Z-layers, where each layer is a collection of components that implement event handlers. These are called Z-layers because they exist as layers along the Z-axis, where the Z-axis is the dimension that extends into the screen.
 
-To implement a layered event system, we will implement several components, which include the Events, the Event Dispatcher, the Layer Stack, and the Window. The Events component is our type hierarchy of applicable events that can be handled by our engine and its applications. The principle purpose of the Events component is to define these applicable events, their properties, and group the events into usable categories. The Event Dispatcher is responsible for connecting applicable events to event handlers that can act upon the event. The Layer Stack manages an open stack of Layers, where each layer contains components that define event handlers, and the stack maintains a hierarchy of layers. The Layer Stack uses an open stack, so that new layers can be inserted anywhere into the layer stack. Finally, the Window will be a GLFW window that will serve as a canvas for generating events.
+To implement a layered event system, we will implement several components, which include the Events, the Layer Stack, and the Window. The Events component is our type hierarchy of applicable events that can be handled by our engine and its applications. The principle purpose of the Events component is to define these applicable events, their properties, and group the events into usable categories. The Layer Stack manages an open stack of Layers, where each layer contains components that define event handlers, and the stack maintains a hierarchy of layers. The Layer Stack uses an open stack, so that new layers can be inserted anywhere into the layer stack. Finally, the Window will be a GLFW window that will serve as a canvas for generating events.
+
+The Event Dispatcher is a common component included in many event systems. The Event Dispatcher is responsible for connecting applicable events to event handlers that can act upon the event. However, Event Dispatchers are largely unnecessary in many applications and are included primarily for convenience. As such, the Event Dispatcher has been left as an optional task.
 
 If this sounds like a lot, the only right thing to do is to get started :)
 
@@ -70,7 +72,6 @@ The Events component defines the event types that our applications can handle an
   - [ ] WindowResize
   - [ ] WindowFocus
   - [ ] WindowLostFocus
-  - [ ] WindowMoved
   - [ ] AppStart
   - [ ] AppUpdate
 - Note: we'll handle input events later.
@@ -89,12 +90,11 @@ The Events component defines the event types that our applications can handle an
     - [ ] <code>WindowResizeEvent(unsigned int width, unsigned int height)</code>
     - [ ] <code>WindowFocusEvent</code>
     - [ ] <code>WindowLostFocusEvent</code>
-    - [ ] <code>WindowMovedEvent</code>
     - [ ] <code>AppStartEvent</code>
     - [ ] <code>AppUpdateEvent</code>
 - Note: see [theCherno - Events](https://www.youtube.com/watch?v=xnopUoZbMEk) for an example
 
-## Event Dispatcher
+## (Optional) Event Dispatcher
 The event dispatcher is responsible for sending triggered events to event handlers that can handle those events.
 - [ ] In the Event.h header, define the <code>class EventDispatcher</code> within the Tandy namespace
 - Note: the event dispatcher is not exported and is only used within the engine
