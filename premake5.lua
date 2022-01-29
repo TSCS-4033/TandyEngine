@@ -9,6 +9,12 @@ workspace "TandyEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories for 3rd party libraries
+IncludeDir = {}
+IncludeDir["GLFW"] = "TandyEngine/vendor/GLFW/incldue"
+
+include "TandyEngine/vendor/GLFW"
+
 project "TandyEngine"
     location "TandyEngine"
     kind "SharedLib"
@@ -24,7 +30,13 @@ project "TandyEngine"
 
     includedirs {
         "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+        "{IncludeDir.GLFW}"
+    }
+
+    links {
+        "GLFW",
+        "opengl32.lib"
     }
 
     filter "system:Windows"
