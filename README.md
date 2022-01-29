@@ -124,3 +124,22 @@ The Layer Stack is responsible for ordering Layers into a hierarchy, where Layer
     - [ ] <code>std::vector\<Layer*\>::iterator begin()</code>
     - [ ] <code>std::vector\<Layer*\>::iterator end()</code>
 - Note: see [theCherno - Layers](https://www.youtube.com/watch?v=_Kj6BSfM6P4) for an example
+
+## Window
+The Window component is the final component that we will implement as part of the Event System. The Window is technically not a component of the event system. However, it provides a necessary canvas for generating events. A Window is a simple object that can be interacted with. All of our applicable events, except for AppStart, will be in some way associated with the Window object.
+- We'll be using GLFW to create our Window object. I've already included GLFW into our build system.
+- [ ] In TandyEngine/src/Tandy, add a Window.h header file.
+- [ ] In the Window.h header file, within the Tandy namespace, define a <code>class Window</code>.
+- [ ] It should be exported as part of the TANDY\_API
+- [ ] It should define the following public API:
+    - [ ] <code>virtual void OnUpdate();</code>
+    - [ ] <code>virtual unsigned int GetWidth();</code>
+    - [ ] <code>virtual unsigned int GetHeight();</code>
+    - [ ] <code>virtual void SetEventCallback(const std::function\<void(Event&)\>& callback);</code>
+    - [ ] <code>static Window* Create(std::string Title, unsigned int Width, unsigned int Height);</code>
+- [ ] In TandyEngine/src/, add a Platform folder
+- [ ] In TandyEngine/src/Platform/, add a Windows folder
+- [ ] In TandyEngine/src/Platform/Windows/, add a new item WindowsWindow class with corresponding .h and .cpp files
+- [ ] In the WindowsWindow.h header file, define <code>class WindowsWindow : public Window</code>
+- [ ] Implement the WindowsWindow class
+- Note: see [theCherno - Window Abstraction and GLFW](https://www.youtube.com/watch?v=88dmtleVywk) for an example
