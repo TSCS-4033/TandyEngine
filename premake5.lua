@@ -11,7 +11,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories for 3rd party libraries
 IncludeDir = {}
-IncludeDir["GLFW"] = "TandyEngine/vendor/GLFW/incldue"
+IncludeDir["GLFW"] = "TandyEngine/vendor/GLFW/include"
 
 include "TandyEngine/vendor/GLFW"
 
@@ -19,6 +19,7 @@ project "TandyEngine"
     location "TandyEngine"
     kind "SharedLib"
     language "C++"
+    staticruntime "Off"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -31,7 +32,7 @@ project "TandyEngine"
     includedirs {
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
-        "{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}"
     }
 
     links {
@@ -41,7 +42,6 @@ project "TandyEngine"
 
     filter "system:Windows"
         cppdialect "C++17"
-        staticruntime "On"
         systemversion "latest"
 
         defines {
@@ -69,6 +69,7 @@ project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
+    staticruntime "Off"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -89,7 +90,6 @@ project "Sandbox"
 
     filter "system:Windows"
         cppdialect "C++17"
-        staticruntime "On"
         systemversion "latest"
 
         defines {
