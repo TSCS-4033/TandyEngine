@@ -12,8 +12,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories for 3rd party libraries
 IncludeDir = {}
 IncludeDir["GLFW"] = "TandyEngine/vendor/GLFW/include"
+IncludeDir["Glad"] = "TandyEngine/vendor/Glad/include"
+IncludeDir["ImGui"] = "TandyEngine/vendor/ImGui/include"
 
 include "TandyEngine/vendor/GLFW"
+include "TandyEngine/vendor/Glad"
+include "TandyEngine/vendor/ImGui"
 
 project "TandyEngine"
     location "TandyEngine"
@@ -32,11 +36,15 @@ project "TandyEngine"
     includedirs {
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}",
+        "%{IncludeDir.ImGui}"
     }
 
     links {
         "GLFW",
+        "Glad",
+        "ImGui",
         "opengl32.lib"
     }
 

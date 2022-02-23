@@ -4,3 +4,6 @@
 [submodule "TandyEngine/vendor/GLFW"]
 	path = TandyEngine/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+[submodule "TandyEngine/vendor/ImGui"]
+	path = TandyEngine/vendor/ImGui
+	url = https://github.com/TheCherno/imgui
