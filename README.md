@@ -143,3 +143,40 @@ The Window component is the final component that we will implement as part of th
 - [ ] In the WindowsWindow.h header file, define <code>class WindowsWindow : public Window</code>
 - [ ] Implement the WindowsWindow class
 - Note: see [theCherno - Window Abstraction and GLFW](https://www.youtube.com/watch?v=88dmtleVywk) for an example
+
+# Project 2 - Renderer
+For project 2, we will be implementing a rendering system that supports GUI elements using the ImGui library.
+
+## ImGui
+The ImGui build system has already been integrated into the project to render ImGui elements in a GLFW window.
+- [ ] Add an ImGui folder to TandyEngine/src/Tandy
+- [ ] In the ImGui folder, add an ImGuiLayer class (with corresponding .cpp and .h files)
+- [ ] It should extend the Layer class
+- It should define the following public API:
+    - [ ] <code>virtual void OnAttach();</code>
+    - [ ] <code>virtual void OnDetach();</code>
+    - [ ] <code>virtual void OnEvent(Event& event);</code>
+- [ ] Implement the ImGui layer with constructors and destructors
+- Note: see [theCherno - ImGui](https://www.youtube.com/watch?v=st4lgNI6_F4) for an example
+- Note: you don't need to worry about the OpenGL platform folder; I've already configured it for you
+- Note: you don't need to worry about keymaps
+- Note: you'll likely need to modify Application to return the current the singleton instance and the current window; see next
+
+## Application
+Modify the Application class to support the use of Layers and Overlays
+- Add the following public API to Application
+    - [ ] <code>void PushLayer(Layer* layer);</code>
+    - [ ] <code>void PushOverlay(Layer* layer);</code>
+    - [ ] <code>Window& GetWindow();</code>
+    - [ ] <code>ImGuiLayer* GetImGuiLayer();</code>
+    - [ ] <code>static Application& GetApplication();</code>
+- Implement the new API of Application
+- Note: you'll need to modify the LayerStack API to support the new Application API
+
+## LayerStack
+Modify the LayerStack class to support the new API of Application
+- Add the following public API to LayerStack
+    - [ ] <code>void PushOverlay(Layer* layer);</code>
+    - [ ] <code>void PopOverlay(Layer* layer);</code>
+
+## Renderer
