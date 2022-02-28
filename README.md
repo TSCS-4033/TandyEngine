@@ -155,9 +155,11 @@ The ImGui build system has already been integrated into the project to render Im
 - It should define the following public API:
     - [ ] <code>virtual void OnAttach();</code>
     - [ ] <code>virtual void OnDetach();</code>
+    - [ ] <code>virtual void OnUpdate(float deltaTime);</code>
     - [ ] <code>virtual void OnEvent(Event& event);</code>
 - [ ] Implement the ImGui layer with constructors and destructors
 - Note: see [theCherno - ImGui](https://www.youtube.com/watch?v=st4lgNI6_F4) for an example
+- Note: see [theCherno - ImGui Docking and Viewports](https://www.youtube.com/watch?v=lZuje-3iyVE) for an example
 - Note: you don't need to worry about the OpenGL platform folder; I've already configured it for you
 - Note: you don't need to worry about keymaps
 - Note: you'll likely need to modify Application to return the current the singleton instance and the current window; see next
@@ -166,7 +168,7 @@ The ImGui build system has already been integrated into the project to render Im
 Modify the Application class to support the use of Layers and Overlays
 - Add the following public API to Application
     - [ ] <code>void PushLayer(Layer* layer);</code>
-    - [ ] <code>void PushOverlay(Layer* layer);</code>
+    - [ ] <code>void PushOverlay(Layer* overlay);</code>
     - [ ] <code>Window& GetWindow();</code>
     - [ ] <code>ImGuiLayer* GetImGuiLayer();</code>
     - [ ] <code>static Application& GetApplication();</code>
@@ -176,7 +178,16 @@ Modify the Application class to support the use of Layers and Overlays
 ## LayerStack
 Modify the LayerStack class to support the new API of Application
 - Add the following public API to LayerStack
-    - [ ] <code>void PushOverlay(Layer* layer);</code>
-    - [ ] <code>void PopOverlay(Layer* layer);</code>
+    - [ ] <code>void PushOverlay(Layer* overlay);</code>
+    - [ ] <code>void PopOverlay(Layer* overlay);</code>
+
+## Layer
+Modify the Layer API so that the update method requires a delta time
+- Modify the following public API on Layer
+    - [ ] <code>void OnUpdate(float deltaTime);</code>
 
 ## Renderer
+Implement a renderer to render your first triangle. This will require using a rendering context in OpneGL.
+- Modify the WindowsWindow.cpp file to use a rendering context.
+- Note: see [theCherno - Rendering Context](https://www.youtube.com/watch?v=YZKEjaCnsjU) for an example
+- Note: see [theCherno - Our First Triangle!](https://www.youtube.com/watch?v=bwFYXo0VgCc) for an example
