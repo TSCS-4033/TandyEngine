@@ -191,3 +191,68 @@ Implement a renderer to render your first triangle. This will require using a re
 - Modify the WindowsWindow.cpp file to use a rendering context.
 - Note: see [theCherno - Rendering Context](https://www.youtube.com/watch?v=YZKEjaCnsjU) for an example
 - Note: see [theCherno - Our First Triangle!](https://www.youtube.com/watch?v=bwFYXo0VgCc) for an example
+
+# Project 3 - Shaders and Vertex Buffers
+For project 3, we will be implementing shaders and vertex buffers to support the creation of an orthographic camera.
+
+## Shaders
+Add folder TandyEngine/src/Tandy/Renderer. Create Shader.h and Shader.cpp files.
+- Implement <code>class Shader</code> within the Tandy Namespace with the following public API:
+    - [ ] <code>Shader(const std::string& vertexSrc, const std:string& fragmentSrc)</code>
+    - [ ] <code>void Bind()</code>
+    - [ ] <code>void Unbind()</code>
+Follow the instructions in [theCherno - OpenGL Shaders](https://www.youtube.com/watch?v=QBCCHm_9HV) to complete the Shader class.
+
+## Vertex Buffer
+Create Buffer.h and Buffer.cpp files inside of Tandy/Renderer.
+- Implement <code>class VertexBuffer</code> within the Tandy Namespace with the following public API:
+    - [ ] <code>virtual void Bind()</code>
+    - [ ] <code>virtual void Unbind()</code>
+    - [ ] <code>static VertexBuffer* Create(float* vertices, uint32_t size)</code>
+- Implement <code>class IndexBuffer</code> within the Tandy Namespace with the following public API:
+    - [ ] <code>virtual void Bind()</code>
+    - [ ] <code>virtual void Unbind()</code>
+    - [ ] <code>static IndexBuffer* Create(uint32_t* indices, uint32_t size)</code>
+- Create OpenGL implementations of both VertexBuffer and IndexBuffer. The implementations should be included in files OpenGLBuffer.h and OpenGLBuffer.cpp in Platform/OpenGL. Should be included within the Tandy Namespace.
+Follow the instructions in [theCherno - Renderer API Abstraction](https://www.youtube.com/watch?v=BwCqRqqbB1Y) to complete this step.
+
+## Vertex Buffer Layout
+In Buffer.h and Buffer.cpp,
+- Implement <code>class BufferLayout</code> with the following public API:
+    - [ ] <code>std::vector\<BufferElement\>& GetElements()</code>
+- Implement <code>struct BufferElement</code> with the following properties:
+    - [ ] <code>std::string Name</code>
+    - [ ] <code>ShaderDataType type</code>
+    - [ ] <code>uint32_t Size</code>
+    - [ ] <code>uint32_t Offset</code>
+    - [ ] <code>BufferElement(const std::string& name, ShaderDataType type)</code>
+- Implement <code>enum class ShaderDataType</code> with the following enums:
+    - [ ] <code>None = 0</code>
+    - [ ] <code>Float</code>
+    - [ ] <code>Float2</code>
+    - [ ] <code>Float3</code>
+    - [ ] <code>Float4</code>
+    - [ ] <code>Mat3</code>
+    - [ ] <code>Mat4</code>
+    - [ ] <code>Int</code>
+    - [ ] <code>Int2</code>
+    - [ ] <code>Int3</code>
+    - [ ] <code>Int4</code>
+    - [ ] <code>Bool</code>
+- These should all be included within the Tandy Namespace.
+Follow the instructions in [theCherno - Vertex Buffer Layouts](https://www.youtube.com/watch?v=jIJFM_pi6gQ) to complete this step.
+
+## Vertex Array
+Create VertexArray.h and VertexArray.cpp files inside of Tandy/Renderer.
+- Implement <code>class VertexArray</code> with the following public API:
+    - [ ] <code>void Bind()</code>
+    - [ ] <code>void Unbind()</code>
+    - [ ] <code>void AddVertexBuffer(const std::shared_ptr\<VertexBuffer\>& vertexBuffer)</code>
+    - [ ] <code>void AddIndexBuffer(const std::shared_ptr\<IndexBuffer\>& vertexBuffer)</code>
+    - [ ] <code>static VertexArray* Create()</code>
+- Create OpenGL implementation of VertexArray within OpenGLVertexArray.h and OpenGLVertexArray.cpp files, which should be located in Platform/OpenGL. Should be included within the Tandy Namespace.
+Follow the instructions in [theCherno - Vertex Arrays](https://www.youtube.com/watch?v=rkxrw8dNrvI) to complete this step.
+
+Other videos that may be useful:
+- [theCherno - Rendering Context](https://www.youtube.com/watch?v=YZKEjaCnsjU)
+- [theCherno - Render Flow and Submission](https://www.youtube.com/watch?v=akxevYYWd9g)
