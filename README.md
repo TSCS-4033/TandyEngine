@@ -256,3 +256,26 @@ Follow the instructions in [theCherno - Vertex Arrays](https://www.youtube.com/w
 Other videos that may be useful:
 - [theCherno - Rendering Context](https://www.youtube.com/watch?v=YZKEjaCnsjU)
 - [theCherno - Render Flow and Submission](https://www.youtube.com/watch?v=akxevYYWd9g)
+
+# Project 4 - Cameras
+For project 4, we will be implementing an orthographic camera.
+
+## Orthographic Camera
+Create OrthographicCamera.h and OrthographicCamera.cpp files inside of Tandy/Renderer.
+- Implement <code>class OrthographicCamera</code> with the following public API:
+    - [ ] <code>OrthographicCamera(float left, float right, float bottom, float top)</code>
+    - [ ] <code>glm::vec3& GetPosition()</code>
+    - [ ] <code>float GetRotation()</code>
+    - [ ] <code>void SetPosition(const glm::vec3& position)</code>
+    - [ ] <code>void SetRotation(float rotation)</code>
+    - [ ] <code>glm::mat4& GetProjectionMatrix()</code>
+    - [ ] <code>glm::mat4& GetViewMatrix()</code>
+    - [ ] <code>glm::mat4& GetViewProjectionMatrix()</code>
+Follow the instructions in [theCherno - Creating an Orthographic Camera](https://www.youtube.com/watch?v=NjKv-HWstxA) to complete this step.
+
+## Input Events
+Go back to the Events folder in Tandy. Add input events for mouse and keyboard inputs.
+Follow the instructions in [theCherno - Event System](https://www.youtube.com/watch?v=xnopUoZbMEk) to complete this step.
+
+Other videos that may be useful:
+- [theCherno - Cameras and How They Work](https://www.youtube.com/watch?v=LfbqtmqxX04)
