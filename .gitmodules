@@ -8,3 +8,6 @@
 	path = TandyEngine/vendor/ImGui
 	url = https://github.com/TheCherno/imgui
 	branch = docking
+[submodule "TandyEngine/vendor/glm"]
+	path = TandyEngine/vendor/glm
+	url = https://github.com/g-truc/glm.git
